@@ -3,8 +3,9 @@ var myQuote = {
     yqlURL: "http://query.yahooapis.com/v1/public/yql?q=",
     dataFormat: "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
     symbol: "",
-    action: "",
+    type: "",
     number: "",
+    price: "",
     reason: "",
     stockStats: "",
 
@@ -15,7 +16,7 @@ var myQuote = {
 
             //Get the ticker from the form:
             myQuote.symbol = $("#ticker").val();
-            myQuote.action = $("input[name=transact]:checked").val();
+            myQuote.type = $("input[name=transact]:checked").val();
             myQuote.number = $('#number').val();
             myQuote.reason = $('#reason').val();
 
@@ -26,19 +27,41 @@ var myQuote = {
             $d.success(function (json, textStatus, jqXHR) {
 
                 // Build a row for the history table. Find the name, and the current trade price
-                var name = json.query.results.quote.Name;
-                var price = json.query.results.quote.LastTradePriceOnly;
+
+                myQuote.price = json.query.results.quote.LastTradePriceOnly;
 
                 // Submit the values to the new row builder
                 var new_row = myQuote.buildRow(
-                    myQuote.symbol, myQuote.action, myQuote.number, price, myQuote.reason
+                    myQuote.symbol, myQuote.type, myQuote.number, myQuote.price, myQuote.reason
                 );
 
                 myQuote.populateTable(new_row);
 
             });
 
-        });
+            //Update the database with the user's new transaction.
+
+            $.ajax({
+                url: "/index/transact",
+                data: {
+                    symbol: myQuote.symbol,
+                    type: myQuote.type,
+                    num_shares: myQuote.number,
+                    price: myQuote.price,
+                    reason: myQuote.reason
+                },
+                type: 'post'
+                //dataType: 'json'
+            }).success(function (response) {
+
+                    console.log(response);
+                    alert("Transaction id: " + response);
+
+                }).error(function () {
+                    alert('ERROR!');
+                });
+
+            });
 
         // Ticker input change handler
 
@@ -88,21 +111,18 @@ var myQuote = {
         return $defer;
     },
 
-    buildRow: function (symbol, action, number, price, reason) {
+    buildRow: function (symbol, type, number, price, reason) {
 
         var new_row = $('<tr />');
         for(arg in arguments) {
 
             new_row.append("<td>"+arguments[arg]+"</td>");
         }
-        console.log(new_row);
         return new_row;
 
     },
 
     populateTable: function(new_row) {
-
-        console.log($('#history tr').length);
 
         if($('#history tr').length < 1){
             var header_row = "<tr><th>Stock</th>"+
@@ -126,4 +146,10 @@ var myQuote = {
 function valueOrDefault(val, def) {
     if (def == undefined) def = "N/A";
     return val == undefined ? def : val;
+}
+
+function spider(val, type) {
+
+
+    return val
 }

@@ -34,6 +34,19 @@ class index_controller extends base_controller {
 			echo $this->template;
 
 	} # End of method
-	
+
+    public function transact() {
+
+        $_POST['created'] = Time::now();
+
+        // Temporarily using a dummy user
+        $_POST['user_id'] = 0;
+
+
+        $transact_id = DB::instance(DB_NAME)->insert('transactions', $_POST);
+
+        echo $transact_id;
+
+    } # end of method transact
 	
 } # End of class

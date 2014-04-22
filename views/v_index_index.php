@@ -27,12 +27,12 @@
             </div>
 
 
-            <!--
             <div data-role="fieldcontain">
                 <label for="reason">Why?</label>
                 <textarea name="reason" id="reason"></textarea>
             </div>
 
+            <!--
             <div data-role="fieldcontain">
                 <label for="question">Do you think the stock will go up 5% within 6 months?</label>
                 <fieldset data-role="controlgroup" data-type="horizontal" >
