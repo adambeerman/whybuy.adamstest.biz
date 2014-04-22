@@ -1,0 +1,295 @@
+
+
+/* ---------------------------
+    General Formatting
+------------------------------ */
+
+div {
+    line-height: 1.5em;
+}
+
+span {
+    position:relative;
+    line-height: 1.5em;
+}
+
+input {
+    text-align: right;
+
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-family: helvetica;
+}
+
+h2 {
+    padding: 15px;
+}
+
+/* ---------------------------
+Income Table Specific Formatting
+------------------------------ */
+#income_statement {
+    -webkit-box-shadow: 0px 0px 5px rgba(163,147,130,0.75);
+    -moz-box-shadow: 0px 0px 5px rgba(163,147,130,0.75);
+    box-shadow: 0px 0px 5px rgba(163,147,130,0.75);
+    max-width: 600px;
+    border-radius: 5px;
+    margin: 10px;
+
+}
+
+.container {
+    /*margin: 10px 0 0 10px;*/
+    max-width: 550px;
+}
+
+.entry_name {
+    margin-left: 0px;
+    padding-right: 5px;
+    text-indent: 25px;
+}
+
+.calculated_field {
+    float: right;
+    /*text-decoration: underline;*/
+}
+
+.sum_final {
+    color: black;
+    text-align: right;
+}
+
+.left_indent {
+    float: left;
+    text-indent: 25px;
+}
+
+.ind_final {
+    color: darkgray;
+    text-align: right;
+}
+
+.total {
+    font-weight: bold;
+    float: left;
+    text-indent: 50px;
+}
+
+#new_table, #new_table_status {
+    text-indent: 30px;
+    color: darkgray;
+    opacity: 0.5;
+    position: relative;
+    clear: left;
+}
+
+#new_table:hover {
+    color: black;
+    opacity: 1;
+}
+
+#new_table_status {
+    visibility: hidden;
+    opacitiy: 1;
+    color: darkblue;
+}
+
+#caption_form {
+    display: none;
+    clear: left;
+}
+
+#caption {
+    cursor: pointer;
+}
+
+.entry {
+    float: right;
+    clear: both;
+    vertical-align: bottom;
+    padding: 2px;
+    width: 100%;
+}
+
+.entry_name input {
+    text-align: left;
+    width: 100%;
+}
+
+.expand {
+    color: #428bca;
+    clear: both;
+    float: right;
+    font-size: .75em;
+    cursor: pointer;
+}
+
+.revenue_div, .cos_div, .opex_div, .otherex_div {
+    clear: left;
+}
+
+.calc_name {
+    float: left;
+
+}
+
+#gross, #operating, #net {
+    text-indent: 25px;
+    color: #444444;
+}
+
+#caption_update input:first-child {
+    text-align: left;
+    width: 50%;
+}
+
+#content {
+    float: left;
+    position: relative;
+    clear: left;
+}
+
+#user_table_index {
+    margin-left: 10px;
+}
+
+#user_table_index span {
+    float: none;
+}
+
+#user_table_index input {
+    text-align: left;
+}
+
+#user_table_index li {
+    text-align: left;
+    float: left;
+    clear: left;
+    padding-left: 0;
+}
+
+#name {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #428bca;
+    text-decoration: none;
+}
+
+
+/* ---------------------------
+One-off specific formatting
+------------------------------ */
+
+.italic {
+    font-style: italic;
+    float: left;
+}
+
+.hidden {
+    display: none;
+}
+
+.bold {
+    color: black;
+    font-weight: bold;
+}
+
+.blank {
+    line-height: 20px;
+    color: white;
+}
+
+.empty {
+    background-color: white;
+}
+
+.error {
+    color: red;
+}
+
+.blue_text {
+    color: #428bca;
+}
+
+/* ---------------------------
+Navigation Bar Layout
+------------------------------ */
+
+#menu {
+    background-color: lightcyan;
+    height: 10em;
+}
+
+#menu span {
+    float: left;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    float: left;
+    display: block;
+
+}
+#menu ul li {
+    list-style: none;
+    float: left;
+    display: block;
+    position:relative;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#logo {
+    float: left;
+    height: auto;
+    clear: both;
+    font-family: 'Sansita One', cursive;
+}
+
+#logo a {
+    padding-top: 15px;
+    margin: 5px;
+    font-size: 56px;
+    font-family: 'Sansita One', cursive;
+}
+
+#logo span {
+    padding-left: 10px;
+    margin-left: 5px;
+}
+
+#nav {
+    clear: left;
+    padding-left: 10px;
+    text-align: left;
+    background-color: #428bca;
+    padding: 10px;
+    height: 3em;
+}
+
+#nav a{
+    color: lightcyan;
+}
+
+/* ------------------------
+User Sign-up & Log-in layout
+---------------------------*/
+
+#sign_up_form, #log_in_form{
+    float: left;
+    padding: 5px;
+    margin: 10px;
+}
+
+#sign_up_form input, #log_in_form input {
+    padding-right: 5px;
+    width: auto;
+    float: none;
+    text-align: left;
+
+}
