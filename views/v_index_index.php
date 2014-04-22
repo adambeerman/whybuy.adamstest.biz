@@ -4,7 +4,7 @@
         <form id = "stock_pick">
             <div data-role="fieldcontain">
                 <label for="ticker">Choose stock:</label>
-                <input type="search" name="ticker" id="ticker" data-mini="true" placeholder="Enter ticker" value=""  />
+                <input type="search" name="ticker" id="ticker" data-mini="false" placeholder="Enter ticker" value=""  />
 
                 <div id = "stock_price"><h4><span style = "color: gray"></span></h4></div>
             </div>

@@ -31,7 +31,7 @@ var myQuote = {
 
                 // Submit the values to the new row builder
                 var new_row = myQuote.buildRow(
-                    myQuote.symbol, name, myQuote.action, myQuote.number, price, myQuote.reason
+                    myQuote.symbol, myQuote.action, myQuote.number, price, myQuote.reason
                 );
 
                 myQuote.populateTable(new_row);
@@ -88,7 +88,7 @@ var myQuote = {
         return $defer;
     },
 
-    buildRow: function (symbol, name, action, number, price, reason) {
+    buildRow: function (symbol, action, number, price, reason) {
 
         var new_row = $('<tr />');
         for(arg in arguments) {
@@ -96,7 +96,6 @@ var myQuote = {
             new_row.append("<td>"+arguments[arg]+"</td>");
         }
         console.log(new_row);
-        //new_row.append("<td>"+"symbol</td><td>name</td><td>action</td><td>number</td><td>price</td><td>reason</td>")
         return new_row;
 
     },
