@@ -4,6 +4,7 @@
 	<title><?php if(isset($title)) echo $title; ?></title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
     <!-- INCLUDE SPECIAL FONT, MAIN.CSS, AND BOOTSTRAP.CSS -->
     <link href='http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet' type='text/css'>
