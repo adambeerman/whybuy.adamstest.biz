@@ -3,12 +3,29 @@
 Stock picking design
 ---------------------------- */
 
+h1 {
+    font-family: 'Sansita One', cursive;
+    font-size: 2em;
+}
 #stock_bucket {
-    clear: left;
-    padding: 10px;
+}
+
+body {
+    font-family: 'Helvetica';
+}
+
+td, th {
+    width: 15%;
+    border-right: 1px solid lightgray;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
 
 }
 
-.stock_pick {
+td:last-of-type {
+    border-bottom: none;
+}
 
+td:last-child, th:last-child {
+    border-right: none;
 }

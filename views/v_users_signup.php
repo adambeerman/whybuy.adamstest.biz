@@ -24,20 +24,25 @@
         </div>
     <?php endif; ?>
 
-    Name<br>
-    <input type='text' name='first_name' placeholder="First">
-    <input type='text' name='last_name' placeholder="Last">
-    <br><br>
+    <div data-role="fieldcontain">
+        <label for="first_name">Name</label>
+        <input type="text" name="first_name" id="first_name" data-mini="false" placeholder="name" value=""  />
+    </div>
 
-    Email<br>
-    <input type='text' name='email' placeholder="e-mail address">
-    <br><br>
+    <div data-role="fieldcontain">
+        <label for="email">Email address</label>
+        <input type = "email" name = "email" id = "email" data-mini="false" placeholder="e-mail address" />
+    </div>
 
-    Password<br>
-    <small>(greater than 5 digits, please!)</small><br>
-    <input type='password' name='password' placeholder="password">
-    <br><br>
+    <div data-role = "fieldcontain">
+        <label for="password">Password</label>
+        <input type = "password" name = "password" placeholder="> 5 digits, please" />
+    </div>
 
-    <input type='submit' value='Sign up'>
+    <div data-role = "fieldcontain">
+        <label for = "submit"></label>
+        <input type='submit' value='Sign up'>
+    </div>
+
 
 </form>

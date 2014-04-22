@@ -22,10 +22,13 @@ class index_controller extends base_controller {
 			$this->template->title = APP_NAME;
 	
 		# CSS/JS includes
-			/*
-			$client_files_head = Array("");
-	    	$this->template->client_files_head = Utils::load_client_files($client_files);
-	    	
+
+			/*$client_files_head = Array(
+                "/js/myQuote.js",
+                "/js/loadMyQuote.js"
+            );
+	    	$this->template->client_files_head = Utils::load_client_files($client_files_head);
+
 	    	$client_files_body = Array("");
 	    	$this->template->client_files_body = Utils::load_client_files($client_files_body);   
 	    	*/
@@ -53,12 +56,17 @@ class index_controller extends base_controller {
                 break;
         }
 
-        // Temporarily using a dummy user
-        $_POST['user_id'] = 0;
+        // Save with the user's id. Dummy user if not logged in
+        if(isset($this->user->id)) {
+            $_POST['user_id'] = $this->user->id;
+        }
+        else {
+            $_POST['user_id'] = 0;
+        }
 
         $transact_id = DB::instance(DB_NAME)->insert('transactions', $_POST);
 
-        echo $_POST['type'];
+        echo $transact_id;
 
     } # end of method transact
 	

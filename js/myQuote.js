@@ -10,90 +10,65 @@ var myQuote = {
     stockStats: "",
 
     init: function () {
-
         //Sumbit click handler:
-        $("#submit").click(function () {
+        $("#stock_submit").click(function () {
 
             //Get the ticker from the form:
-            myQuote.symbol = $("#ticker").val();
+            myQuote.symbol = $("#ticker").val().toUpperCase();
             myQuote.type = $("input[name=transact]:checked").val();
             myQuote.number = $('#number').val();
             myQuote.reason = $('#reason').val();
 
-            //Get the stock data from YQL, return a jQuery Deferred:
+            //Get the stock data from YQL via AJAX:
             var $d = myQuote.getStockData();
 
-            //After retrieving the JSON data, populate the table:
+            //After retrieving the JSON data, populate the table (nested AJAX call to populate database):
             $d.success(function (json, textStatus, jqXHR) {
 
                 // Build a row for the history table. Find the name, and the current trade price
                 myQuote.price = json.query.results.quote.LastTradePriceOnly;
 
+                // Update the WhyBuy database, and populate the table on success of this
+                $.ajax({
+                    async: false,
+                    url: "/index/transact",
+                    data: {
+                        symbol: myQuote.symbol,
+                        type: myQuote.type,
+                        num_shares: myQuote.number,
+                        price: myQuote.price,
+                        reason: myQuote.reason
+                    },
+                    type: 'post'
+                }).success(function (response) {
 
+                        // Submit the values to the new row builder
+                        var new_row = myQuote.buildRow(
+                            myQuote.symbol, myQuote.type, myQuote.number, myQuote.price
+                        );
 
-                // Submit the values to the new row builder
-                var new_row = myQuote.buildRow(
-                    myQuote.symbol, myQuote.type, myQuote.number, myQuote.price, myQuote.reason
-                );
+                        // Populate the table on bottom of screen with the new information
+                        myQuote.populateTable(new_row);
 
-                // Populate the table on bottom of screen with the new information
-                myQuote.populateTable(new_row);
-
-            });
-
-            //Update the database with the user's new transaction.
-
-            $.ajax({
-                async: false,
-                url: "/index/transact",
-                data: {
-                    symbol: myQuote.symbol,
-                    type: myQuote.type,
-                    num_shares: myQuote.number,
-                    price: myQuote.price,
-                    reason: myQuote.reason
-                },
-                type: 'post',
-                beforeSend: function() {
-                    switch(myQuote.type) {
-                        case "buy":
-                            myQuote.type = 1;
-                            break;
-                        case "sell":
-                            myQuote.type = 2;
-                            break;
-                        default:
-                            myQuote.type = 3;
-                            break;
-                    }
-                    console.log("PRICE = " + myQuote.price);
-                }
-
-            }).success(function (response) {
-
-                    console.log(response);
-                        alert("Transaction id is: " + response);
+                        // Clear the inputs
+                        $('#ticker').val("");
+                        $('#number').val(50);
+                        $('#reason').val("");
 
                     })
-                .error(function () {
-                            alert('ERROR!');
-                        });
-
-
-
-            // Clear the inputs
-            $('#ticker').val("");
-            $('#number').val(50);
-            $('#reason').val("");
-
+                    .error(function () {
+                        alert('ERROR!');
+                    });
+                });
             });
 
         // Populate with current value when a user blurs from the stock selection input
 
         $('#ticker').blur(function () {
 
-            // Gather the ticker value
-            myQuote.symbol = $("#ticker").val();
+            // Gather the ticker value and convert to uppercase
+            myQuote.symbol = $("#ticker").val().toUpperCase();
+            $('#ticker').val(myQuote.symbol);
 
             if(myQuote.symbol != ""){
 
@@ -101,7 +76,7 @@ var myQuote = {
                 var $d = myQuote.getStockData();
 
                 $d.success(function(json){
-                        $('#stock_price h4').html("Last Price: "+valueOrDefault(json.query.results.quote.LastTradePriceOnly));
+                        $('#stock_price h4').html(myQuote.symbol + " - last price: $"+valueOrDefault(json.query.results.quote.LastTradePriceOnly));
                     }
                 );
             }
@@ -110,11 +85,7 @@ var myQuote = {
                     $('#stock_price h4').html("");
                 }
             }
-
-
         });
-
-
     },
 
     getStockData: function () {
@@ -137,7 +108,7 @@ var myQuote = {
         return $defer;
     },
 
-    buildRow: function (symbol, type, number, price, reason) {
+    buildRow: function (symbol, type, number, price) {
 
         var new_row = $('<tr />');
         for(arg in arguments) {
@@ -156,7 +127,6 @@ var myQuote = {
                 "<th># Shares</th>" +
                 "<th>Price</th>" +
                 "<th>Profit/(Loss)</th></tr>";
-            console.log(header_row);
 
             $("#history table").html(header_row);
         }

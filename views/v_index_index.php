@@ -11,7 +11,7 @@
 
 
 
-            <fieldset data-role="controlgroup" data-type="horizontal" >
+            <fieldset data-role="controlgroup" data-type="horizontal" data-theme = "c">
 
                 <input type="radio" name="transact" id="buy" value="buy" checked="checked" />
                 <label for="buy">Buy</label>
@@ -21,7 +21,7 @@
 
             </fieldset>
 
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain" data-theme = "c">
                 <label for="number">Number of shares:</label>
                 <input type="range" name="number" id="number" value="50" min="0" max="100" />
             </div>
@@ -32,26 +32,10 @@
                 <textarea name="reason" id="reason"></textarea>
             </div>
 
-            <!--
-            <div data-role="fieldcontain">
-                <label for="question">Do you think the stock will go up 5% within 6 months?</label>
-                <fieldset data-role="controlgroup" data-type="horizontal" >
-
-                    <input type="radio" name="question" id="yes" value="yes" />
-                    <label for="yes">yes</label>
-
-                    <input type="radio" name="question" id="no" value="no"  />
-                    <label for="no">no</label>
-
-                </fieldset>
-
-            </div>
-            -->
-
-            <a href="#" id="submit" data-role="button" data-theme="f" data-mini="true">Submit</a>
+            <a href="#" id="stock_submit" data-role="button" data-theme="b" data-mini="true">Submit</a>
         </form>
 
-        <div id="history">
+        <div id="history" data-role = "fieldcontain">
             <table>
 
             </table>

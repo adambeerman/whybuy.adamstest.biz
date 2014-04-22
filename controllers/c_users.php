@@ -28,12 +28,6 @@ class users_controller extends base_controller {
 
     public function p_signup() {
 
-        # Check for duplicate emails via JS / Ajax, but double check here
-        /*if( !$this->confirm_unique_email($_POST['email'])){
-            echo "not a unique e-mail";
-            //return Router::redirect('/users/login/$error=signup');
-        }*/
-
 
         ## Validate that the user has entered a valid login name
         $at_sign = strpos($_POST['email'], '@');
@@ -66,14 +60,8 @@ class users_controller extends base_controller {
             Router::redirect('/users/signup/4');
         }
 
-        # Give user the default avatar and profile photo
-        $_POST['avatar'] = "example.gif";
-        $_POST['photo'] = "p_example.gif";
-
-
         # Store time stamp data from user
         $_POST['created']  = Time::now();
-        $_POST['modified'] = Time::now();
 
         # Encrypt the password
         $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
@@ -137,7 +125,7 @@ class users_controller extends base_controller {
             setcookie("token", $token, strtotime('+1 year'), '/', false);
 
             # Send them to the main page
-            Router::redirect('/tables/index');
+            Router::redirect('/index/index/1');
         }
     } # End of Method
 
