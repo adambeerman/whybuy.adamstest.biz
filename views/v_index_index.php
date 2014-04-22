@@ -13,10 +13,10 @@
 
             <fieldset data-role="controlgroup" data-type="horizontal" >
 
-                <input type="radio" name="transact" id="buy" value="Buy" checked="checked" />
+                <input type="radio" name="transact" id="buy" value="buy" checked="checked" />
                 <label for="buy">Buy</label>
 
-                <input type="radio" name="transact" id="sell" value="Sell"  />
+                <input type="radio" name="transact" id="sell" value="sell"  />
                 <label for="sell">Sell</label>
 
             </fieldset>

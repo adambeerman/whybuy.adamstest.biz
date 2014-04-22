@@ -39,13 +39,26 @@ class index_controller extends base_controller {
 
         $_POST['created'] = Time::now();
 
+        //echo $_POST['type'];
+
+        switch($_POST['type']) {
+            case "buy":
+                $_POST['type'] = 1;
+                break;
+            case "sell":
+                $_POST['type'] = 1;
+                break;
+            default:
+                $_POST['type'] = 9;
+                break;
+        }
+
         // Temporarily using a dummy user
         $_POST['user_id'] = 0;
 
-
         $transact_id = DB::instance(DB_NAME)->insert('transactions', $_POST);
 
-        echo $transact_id;
+        echo $_POST['type'];
 
     } # end of method transact
 	

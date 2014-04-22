@@ -27,14 +27,16 @@ var myQuote = {
             $d.success(function (json, textStatus, jqXHR) {
 
                 // Build a row for the history table. Find the name, and the current trade price
-
                 myQuote.price = json.query.results.quote.LastTradePriceOnly;
+
+
 
                 // Submit the values to the new row builder
                 var new_row = myQuote.buildRow(
                     myQuote.symbol, myQuote.type, myQuote.number, myQuote.price, myQuote.reason
                 );
 
+                // Populate the table on bottom of screen with the new information
                 myQuote.populateTable(new_row);
 
             });
@@ -42,6 +44,7 @@ var myQuote = {
             //Update the database with the user's new transaction.
 
             $.ajax({
+                async: false,
                 url: "/index/transact",
                 data: {
                     symbol: myQuote.symbol,
@@ -50,20 +53,42 @@ var myQuote = {
                     price: myQuote.price,
                     reason: myQuote.reason
                 },
-                type: 'post'
-                //dataType: 'json'
+                type: 'post',
+                beforeSend: function() {
+                    switch(myQuote.type) {
+                        case "buy":
+                            myQuote.type = 1;
+                            break;
+                        case "sell":
+                            myQuote.type = 2;
+                            break;
+                        default:
+                            myQuote.type = 3;
+                            break;
+                    }
+                    console.log("PRICE = " + myQuote.price);
+                }
+
             }).success(function (response) {
 
                     console.log(response);
-                    alert("Transaction id: " + response);
+                        alert("Transaction id is: " + response);
 
-                }).error(function () {
-                    alert('ERROR!');
-                });
+                    })
+                .error(function () {
+                            alert('ERROR!');
+                        });
+
+
+
+            // Clear the inputs
+            $('#ticker').val("");
+            $('#number').val(50);
+            $('#reason').val("");
 
             });
 
-        // Ticker input change handler
+        // Populate with current value when a user blurs from the stock selection input
 
         $('#ticker').blur(function () {
 
@@ -99,6 +124,7 @@ var myQuote = {
 
         //Using a jQuery Deferred object, get the json data:
         var $defer = $.ajax({
+            async: false,
             url: realtimeQ,
             data: '{}',
             dataType: 'json'
