@@ -2,6 +2,9 @@
 /* -------------------------
 Stock picking design
 ---------------------------- */
+table {
+    margin: 0 auto;
+}
 
 h1 {
     font-family: 'Sansita One', cursive;
@@ -10,7 +13,6 @@ h1 {
 
 h1 a, h1 a:hover {
     text-decoration: none;
-    color: palegoldenrod;
 }
 
 #stock_bucket {
@@ -29,6 +31,10 @@ td, th {
 }
 
 tr:last-of-type {
+    border-bottom: none;
+}
+
+tr:last-child {
     border-bottom: none;
 }
 

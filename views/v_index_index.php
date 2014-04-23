@@ -1,6 +1,6 @@
 <?php if(!$user): ?>
 
-    <div data-role = "fieldctonain">
+    <div data-role = "fieldcontain">
         <h2>
             Why buy
         </h2>
@@ -51,9 +51,42 @@
             <a href="#" id="stock_submit" data-role="button" data-theme="b" data-mini="true">Submit</a>
         </form>
 
+        <!-- Build history if already exists -->
+
         <div id="history" data-role = "fieldcontain">
             <table>
 
+                <?php if(isset($existing)) {
+
+                    echo "<tr>";
+                    echo "<th>Stock</th>";
+                    echo "<th>Date</th>";
+                    echo "<th>Shares</th>";
+                    echo "<th>Price</th>";
+                    echo "<th>Profit</th>";
+                    echo "</tr>";
+
+                    foreach($existing as $entry) {
+                        echo "<tr>";
+                        echo "<td>".$entry['symbol']."</td>";
+                        echo "<td>".date('n/d',$entry['created'])."</td>";
+
+                        if($entry['type'] == 2){
+                            echo "<td>(".$entry['num_shares'].")</td>";
+                        }
+                        elseif($entry['type'] == 1) {
+                            echo "<td>".$entry['num_shares']."</td>";
+                        }
+                        else {
+                            echo "<td>?</td>";
+                        }
+
+                        echo "<td>".$entry['price']."</td>";
+                        echo "<td>".$entry['profit']."</td>";
+                        echo "</tr>";
+                    }
+                }
+                ?>
             </table>
         </div>
     </div>

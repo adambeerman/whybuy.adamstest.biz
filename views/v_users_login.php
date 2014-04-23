@@ -39,6 +39,7 @@
     </div>
 
     <fieldset class="ui-grid-a">
+        <label for = "submit"></label>
         <div class="ui-block-a"><button data-theme="b" type="submit" class="ui-btn-hidden" aria-disabled="false">Login</button></div>
     </fieldset>
 

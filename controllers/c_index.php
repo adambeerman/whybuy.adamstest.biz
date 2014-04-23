@@ -24,7 +24,7 @@ class index_controller extends base_controller {
 		# CSS/JS includes
 
 			/*$client_files_head = Array(
-                "/js/myQuote.js",
+                "/js/stockQuoteHandler.js",
                 "/js/loadMyQuote.js"
             );
 	    	$this->template->client_files_head = Utils::load_client_files($client_files_head);
@@ -32,9 +32,19 @@ class index_controller extends base_controller {
 	    	$client_files_body = Array("");
 	    	$this->template->client_files_body = Utils::load_client_files($client_files_body);   
 	    	*/
+
+
+
+        # Database query to find the stock entries that this user already has;
+        if(isset($this->user->user_id)){
+            $sql = "SELECT * FROM transactions WHERE user_id = ".$this->user->user_id." ORDER BY created DESC;";
+
+            $existing = DB::instance(DB_NAME)->select_rows($sql);
+            $this->template->content->existing = $existing;
+        }
 	      					     		
 		# Render the view
-			echo $this->template;
+	    echo $this->template;
 
 	} # End of method
 
@@ -49,7 +59,7 @@ class index_controller extends base_controller {
                 $_POST['type'] = 1;
                 break;
             case "sell":
-                $_POST['type'] = 1;
+                $_POST['type'] = 2;
                 break;
             default:
                 $_POST['type'] = 9;
@@ -57,8 +67,8 @@ class index_controller extends base_controller {
         }
 
         // Save with the user's id. Dummy user if not logged in
-        if(isset($this->user->id)) {
-            $_POST['user_id'] = $this->user->id;
+        if(isset($this->user->user_id)) {
+            $_POST['user_id'] = $this->user->user_id;
         }
         else {
             $_POST['user_id'] = 0;

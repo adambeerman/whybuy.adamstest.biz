@@ -3,6 +3,7 @@ var myQuote = {
     yqlURL: "http://query.yahooapis.com/v1/public/yql?q=",
     dataFormat: "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
     symbol: "",
+    date: "",
     type: "",
     number: "",
     price: "",
@@ -13,8 +14,12 @@ var myQuote = {
         //Sumbit click handler:
         $("#stock_submit").click(function () {
 
+            var currentDate = new Date();
+
+
             //Get the ticker from the form:
             myQuote.symbol = $("#ticker").val().toUpperCase();
+            myQuote.date = currentDate.getMonth()+1+"/"+currentDate.getDate();
             myQuote.type = $("input[name=transact]:checked").val();
             myQuote.number = $('#number').val();
             myQuote.reason = $('#reason').val();
@@ -42,9 +47,14 @@ var myQuote = {
                     type: 'post'
                 }).success(function (response) {
 
+                        //If selling shares, parentheses around number
+                        if (myQuote.type == "sell") {
+                            myQuote.number = "("+myQuote.number+")";
+                        }
+
                         // Submit the values to the new row builder
                         var new_row = myQuote.buildRow(
-                            myQuote.symbol, myQuote.type, myQuote.number, myQuote.price
+                            myQuote.symbol, myQuote.date, myQuote.number, myQuote.price, "0.00"
                         );
 
                         // Populate the table on bottom of screen with the new information
@@ -113,8 +123,10 @@ var myQuote = {
         var new_row = $('<tr />');
         for(arg in arguments) {
 
+
             new_row.append("<td>"+arguments[arg]+"</td>");
         }
+        console.log(new_row);
         return new_row;
 
     },
@@ -123,15 +135,15 @@ var myQuote = {
 
         if($('#history tr').length < 1){
             var header_row = "<tr><th>Stock</th>"+
-                "<th>Trade</th>" +
-                "<th># Shares</th>" +
+                "<th>Date</th>" +
+                "<th>Shares</th>" +
                 "<th>Price</th>" +
                 "<th>Profit/(Loss)</th></tr>";
 
             $("#history table").html(header_row);
         }
 
-        new_row.appendTo($("#history table"));
+        $("#history tr:first").after(new_row);
 
     }
 
