@@ -162,16 +162,6 @@ var myQuote = {
 
     populateTable: function(new_row) {
 
-        if($('#history tr').length < 1){
-            var header_row = "<tr><th>Stock</th>"+
-                "<th>Date</th>" +
-                "<th>Shares</th>" +
-                "<th>Price</th>" +
-                "<th>Profit/(Loss)</th></tr>";
-
-            $("#history table").html(header_row);
-        }
-
         $("#history tr:first").after(new_row);
 
     },
@@ -197,7 +187,7 @@ var myQuote = {
 
         total_profit = Math.round(total_profit*100)/100;
 
-        if(total_profit > 0){
+        if(total_profit >= 0){
             $('#total_profit').html("<span class = 'gain'>TOTAL PROFIT: $"+total_profit+"</span>");
         }
         else {
