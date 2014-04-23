@@ -2,13 +2,21 @@
 
     <div data-role = "fieldcontain">
         <h2>
-            Why buy
+            <b></b><em>Why buy</em></b>
         </h2>
         <h3>
             Developed by Adam Beerman
         </h3>
+        <p>This is a tool making quick stock trades and tracking your profits.</p>
         <p>
-            This is a tool for making rapid stock decisions. Can you compete against the market average?
+            Currently, you have free reign of the stock selection.
+            Next phases will have the following features:
+            <ul>
+                <li>IRR Calculations</li>
+                <li>Comparison with overall market portfolio</li>
+                <li>Rapid-fire round</li>
+                <li>Personal Metrics page</li>
+            </ul>
         </p>
     </div>
 

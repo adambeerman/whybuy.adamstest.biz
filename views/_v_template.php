@@ -46,7 +46,7 @@
             <a href = "/users/login" data-mini="true">Login</a>
         <?php else: ?>
             <a href ="/users/logout" data-mini = "true" data-ajax = "false">Logout</a>
-            <a href="/users/settings" data-icon="gear" data-mini="true">Settings</a>
+            <a href="/users/metrics" data-icon="gear" data-mini="true">Metrics</a>
         <?php endif; ?>
 
         <h1><a href = "/" data-ajax = "false"><?=APP_NAME?></a></h1>
