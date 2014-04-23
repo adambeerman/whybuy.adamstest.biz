@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a249e1da-1712-44d3-a402-6da922c7dde3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_index.php" afterPath="$PROJECT_DIR$/controllers/c_index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_users.php" afterPath="$PROJECT_DIR$/controllers/c_users.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/stock2.css" afterPath="$PROJECT_DIR$/css/stock2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stockQuoteHandler.js" afterPath="$PROJECT_DIR$/js/stockQuoteHandler.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_index_index.php" afterPath="$PROJECT_DIR$/views/v_index_index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="p4.adamstest.biz.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398249484700" ignored="false" />
     <file path="/config.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1390503292112" ignored="false" />
-    <file path="/v_index_index.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398287408205" ignored="false" />
+    <file path="/v_index_index.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398287862395" ignored="false" />
     <file path="/main.css" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398117793831" ignored="false" />
     <file path="/_v_template.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398266386904" ignored="false" />
     <file path="/c_users.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398286639009" ignored="false" />
@@ -178,7 +176,7 @@
     <file path="$PROJECT_DIR$/../cake.adamstest.biz/app/Model/Company.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1397940815159" ignored="false" />
     <file path="/Company.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1397940796974" ignored="false" />
     <file path="/myQuote.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398266518000" ignored="false" />
-    <file path="/stock2.css" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398287366726" ignored="false" />
+    <file path="/stock2.css" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398287891295" ignored="false" />
     <file path="$PROJECT_DIR$/../p2.adamstest.biz/controllers/c_users.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398211389088" ignored="false" />
     <file path="/Chatbuilder.html" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398250386517" ignored="false" />
     <file path="/index.html" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398260071673" ignored="false" />
@@ -221,10 +219,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock2.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stock2.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/stock2.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="23" selection-start="352" selection-end="352" vertical-scroll-proportion="-10.961538">
+            <state line="44" column="0" selection-start="612" selection-end="612" vertical-scroll-proportion="1.1167513">
               <folding />
             </state>
           </provider>
@@ -248,10 +246,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="v_index_index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="v_index_index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="14" selection-start="1830" selection-end="1830" vertical-scroll-proportion="0.25714287">
+            <state line="25" column="53" selection-start="800" selection-end="800" vertical-scroll-proportion="-2.4683545">
               <folding>
                 <element signature="e#793#814#0" expanded="true" />
               </folding>
@@ -318,8 +316,8 @@
         <option value="$PROJECT_DIR$/controllers/c_index.php" />
         <option value="$PROJECT_DIR$/controllers/c_users.php" />
         <option value="$PROJECT_DIR$/js/stockQuoteHandler.js" />
-        <option value="$PROJECT_DIR$/css/stock2.css" />
         <option value="$PROJECT_DIR$/views/v_index_index.php" />
+        <option value="$PROJECT_DIR$/css/stock2.css" />
       </list>
     </option>
   </component>
@@ -694,19 +692,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/stock2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="23" selection-start="352" selection-end="352" vertical-scroll-proportion="-10.961538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="14" selection-start="1830" selection-end="1830" vertical-scroll-proportion="0.25714287">
+        <state line="25" column="53" selection-start="800" selection-end="800" vertical-scroll-proportion="-2.4683545">
           <folding>
             <element signature="e#793#814#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/stock2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="612" selection-end="612" vertical-scroll-proportion="1.1167513">
+          <folding />
         </state>
       </provider>
     </entry>

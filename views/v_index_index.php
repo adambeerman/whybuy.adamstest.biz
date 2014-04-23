@@ -27,16 +27,18 @@
             </div>
 
 
+            <div class = "center-buttons">
+                <fieldset data-role="controlgroup" data-type="horizontal" data-theme = "c">
 
-            <fieldset data-role="controlgroup" data-type="horizontal" data-theme = "c">
+                    <input type="radio" name="transact" id="buy" value="buy" checked="checked" />
+                    <label for="buy">Buy</label>
 
-                <input type="radio" name="transact" id="buy" value="buy" checked="checked" />
-                <label for="buy">Buy</label>
+                    <input type="radio" name="transact" id="sell" value="sell"  />
+                    <label for="sell">Sell</label>
 
-                <input type="radio" name="transact" id="sell" value="sell"  />
-                <label for="sell">Sell</label>
+                </fieldset>
+            </div>
 
-            </fieldset>
 
             <div data-role="fieldcontain" data-theme = "c">
                 <label for="number">Number of shares:</label>
