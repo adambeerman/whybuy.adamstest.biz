@@ -54,7 +54,7 @@ var myQuote = {
                         $('#ticker').val("");
                         $('#number').val(50);
                         $('#reason').val("");
-
+                        $('#stock_price h4').html('');
                     })
                     .error(function () {
                         alert('ERROR!');

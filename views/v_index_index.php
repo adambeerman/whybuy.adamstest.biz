@@ -1,3 +1,19 @@
+<?php if(!$user): ?>
+
+    <div data-role = "fieldctonain">
+        <h2>
+            Why buy
+        </h2>
+        <h3>
+            Developed by Adam Beerman
+        </h3>
+        <p>
+            This is a tool for making rapid stock decisions. Can you compete against the market average?
+        </p>
+    </div>
+
+<?php else: ?>
+
 <div id = "stock_bucket">
     <div data-role = "content" class = "stock_pick">
 
@@ -42,3 +58,5 @@
         </div>
     </div>
 </div>
+
+<?php endif; ?>

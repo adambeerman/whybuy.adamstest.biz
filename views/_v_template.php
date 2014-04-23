@@ -40,16 +40,16 @@
     <!-- placeholder to be able to capitalize the app name on the home page -->
 
 
-    <div id = "logo" data-role = "header" data-theme = "b">
+    <div data-role = "header" data-fullscreen = "true" data-theme = "b">
         <?php if(!$user): ?>
             <a href="/users/signup" data-mini="true">Signup</a>
             <a href = "/users/login" data-mini="true">Login</a>
         <?php else: ?>
-            <a href ="/users/logout" data-mini = "true">Logout</a>
+            <a href ="/users/logout" data-mini = "true" data-ajax = "false">Logout</a>
             <a href="/users/settings" data-icon="gear" data-mini="true">Settings</a>
         <?php endif; ?>
 
-        <h1><?=APP_NAME?></h1>
+        <h1><a href = "/" data-ajax = "false"><?=APP_NAME?></a></h1>
     </div>
 
     <div id = "content" data-role = "content" data-theme = "a">

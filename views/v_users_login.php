@@ -2,7 +2,6 @@
 
 
 <h2>Log In</h2>
-<form id = "log_in_form" method='POST' action='/users/p_login'>
 
     <?php if(isset($error)): ?>
         <?php
@@ -26,14 +25,22 @@
 
     <?php endif; ?>
 
-    Email<br>
-    <input type='text' name='email' placeholder="e-mail">
-    <br>
+<!--Login form start-->
+<form id="login" action="/users/p_login" method="post" data-ajax="false">
 
-    Password<br>
-    <input type='password' name='password' placeholder="password">
-    <br>
+    <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+        <label for="email">Email:</label>
+        <input type="email" value="" id="email" name="email" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c">
+    </div>
 
-    <input type='submit' value='Log in'>
+    <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+        <label for="password">Password:</label>
+        <input type="password" value="" id="password" name="password" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c">
+    </div>
+
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button data-theme="b" type="submit" class="ui-btn-hidden" aria-disabled="false">Login</button></div>
+    </fieldset>
 
 </form>
+<!-- /Login form end-->

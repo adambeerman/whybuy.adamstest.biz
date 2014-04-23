@@ -1,28 +1,28 @@
 <h2>Sign Up</h2>
 
-<form id = "sign_up_form" method='POST' action='/users/p_signup'>
+<?php if(isset($msg)): ?>
+    <div class = 'error' >
+        <?php
 
-    <?php if(isset($error)): ?>
-        <div class = 'error' >
-            <?php
-
-            //Display different error codes for different login issues
-            switch($error) {
-                case "signup": echo "SIGNUP ISSUE";
-                    break;
-                case 1: echo "Please enter a valid e-mail address";
-                    break;
-                case 2: echo "E-mail address already exists!";
-                    break;
-                case 3: echo "We at least need your first name!";
-                    break;
-                case 4: echo "Password needs to be at least 6 characters";
-                    break;
-                default: echo "Login issues. We're working on it!";
+        //Display different error codes for different login issues
+        switch(htmlspecialchars($msg)) {
+            case "signup": echo "SIGNUP ISSUE";
                 break;
-            }?>
-        </div>
-    <?php endif; ?>
+            case 1: echo "Please enter a valid e-mail address";
+                break;
+            case "email_exists": echo "E-mail address already exists!";
+                break;
+            case "first_name_needed": echo "We need your first name!";
+                break;
+            case "password_length": echo "Password needs to be at least 6 characters";
+                break;
+            default: echo "Login issues. Sorry!";
+            break;
+        }?>
+    </div>
+<?php endif; ?>
+
+<form id = "sign_up_form" method='POST' action='/users/p_signup' data-ajax="false">
 
     <div data-role="fieldcontain">
         <label for="first_name">Name</label>
@@ -36,7 +36,7 @@
 
     <div data-role = "fieldcontain">
         <label for="password">Password</label>
-        <input type = "password" name = "password" placeholder="> 5 digits, please" />
+        <input type = "password" name = "password" placeholder=" at least 5 digits, please" />
     </div>
 
     <div data-role = "fieldcontain">

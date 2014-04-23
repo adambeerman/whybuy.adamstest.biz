@@ -12,14 +12,14 @@ class users_controller extends base_controller {
 
     } # End of Method
 
-    public function signup($error = NULL) {
+    public function signup($msg = NULL) {
 
         # Setup view
         $this->template->content = View::instance('v_users_signup');
         $this->template->title   = "Sign Up";
 
         # Pass data to the view
-        $this->template->content->error = $error;
+        $this->template->content->msg = $msg;
 
         # Render template
         echo $this->template;
@@ -28,15 +28,6 @@ class users_controller extends base_controller {
 
     public function p_signup() {
 
-
-        ## Validate that the user has entered a valid login name
-        $at_sign = strpos($_POST['email'], '@');
-
-        # Error code 1 indicates invalid login name
-        if($at_sign === false) {
-            Router::redirect('/users/signup/$error=signup');
-        }
-
         ## if the email has already been created, then alert the person signing up
         $email = $_POST['email'];
         $q = "SELECT created FROM users WHERE email = '".$email."'";
@@ -44,20 +35,20 @@ class users_controller extends base_controller {
 
         # Error code 2 indicates that user already exists
         if(isset($emailexists)){
-            Router::redirect('/users/signup/2');
+            Router::redirect('/users/signup/email_exists');
         }
 
         ## Ensure that the user has entered a first name
 
         # Error code 3 indicates that user needs a first name
         if(strlen($_POST['first_name'])<1){
-            Router::redirect('/users/signup/3');
+            Router::redirect('/users/signup/need_first_name');
         }
 
         ## Ensure password is greater than 5 characters
         # Error code 4 indicates that password is too short
         if(strlen($_POST['password'])<6) {
-            Router::redirect('/users/signup/4');
+            Router::redirect('/users/signup/password_length');
         }
 
         # Store time stamp data from user
@@ -78,14 +69,14 @@ class users_controller extends base_controller {
 
     } # End of Method
 
-    public function login($error = NULL) {
+    public function login($msg = NULL) {
 
         # Setup view
         $this->template->content = View::instance('v_users_login');
         $this->template->title   = "Login";
 
         # Pass data to the view
-        $this->template->content->error = $error;
+        $this->template->content->msg = $msg;
 
         # Render template
         echo $this->template;
@@ -125,7 +116,7 @@ class users_controller extends base_controller {
             setcookie("token", $token, strtotime('+1 year'), '/', false);
 
             # Send them to the main page
-            Router::redirect('/index/index/1');
+            Router::redirect('/');
         }
     } # End of Method
 
@@ -148,5 +139,16 @@ class users_controller extends base_controller {
 
     } # End of Method
 
+    public function settings() {
+
+        # Setup view
+        $this->template->content = View::instance('v_users_settings');
+        $this->template->title   = "Settings";
+
+        # Render template
+        echo $this->template;
+
+    } # End of method settings
+
 	
-} # eoc
+} # End of Class
