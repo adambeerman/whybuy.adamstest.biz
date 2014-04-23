@@ -22,7 +22,8 @@
                 <label for="ticker">Choose stock:</label>
                 <input type="search" name="ticker" id="ticker" data-mini="false" placeholder="Enter ticker" value=""  />
 
-                <div id = "stock_price"><h4><span style = "color: gray"></span></h4></div>
+                <ul id="suggestions" data-role="listview" data-inset="true"></ul>
+                <div id = "stock_price"><span style = "color: gray"></span></div>
             </div>
 
 
@@ -52,6 +53,10 @@
         </form>
 
         <!-- Build history if already exists -->
+
+        <br />
+        <div id = "total_profit"></div>
+        <div id = "spider_profit"></div>
 
         <div id="history" data-role = "fieldcontain">
             <table>

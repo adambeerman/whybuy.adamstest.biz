@@ -7,10 +7,14 @@ var myQuote = {
     type: "",
     number: "",
     price: "",
+    purchasePrice: "",
     reason: "",
     stockStats: "",
 
     init: function () {
+
+        myQuote.profit_calcs();
+
         //Sumbit click handler:
         $("#stock_submit").click(function () {
 
@@ -70,7 +74,14 @@ var myQuote = {
                         alert('ERROR!');
                     });
                 });
+
+
+            // Update the profit calculations
+            myQuote.profit_calcs();
+
+
             });
+
 
         // Populate with current value when a user blurs from the stock selection input
 
@@ -82,13 +93,10 @@ var myQuote = {
 
             if(myQuote.symbol != ""){
 
-                // Round up the stock data
-                var $d = myQuote.getStockData();
+                // Gather the last stock price
+                var $d = myQuote.getCurrentPrice(myQuote.symbol);
+                $('#stock_price span').html(myQuote.symbol + " - last price: $"+$d);
 
-                $d.success(function(json){
-                        $('#stock_price h4').html(myQuote.symbol + " - last price: $"+valueOrDefault(json.query.results.quote.LastTradePriceOnly));
-                    }
-                );
             }
              else {
                 if($('#ticker').val() == ""){
@@ -97,6 +105,28 @@ var myQuote = {
             }
         });
     },
+
+    getCurrentPrice: function($symbol) {
+
+        //Build the URL to pass to YQL:
+        var currentPrice = myQuote.yqlURL + "select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + $symbol + "%22)%0A%09%09&" + myQuote.dataFormat;
+
+        $.ajax({
+            async: false,
+            url: currentPrice,
+            data: '{}',
+            dataType: 'json'
+        }).success(function(json, textStatus, jqXHR) {
+
+                myQuote.price = json.query.results.quote.LastTradePriceOnly;
+
+            }).error(function() {
+                alert('error');
+            });
+
+        return myQuote.price;
+    },
+
 
     getStockData: function () {
 
@@ -126,7 +156,6 @@ var myQuote = {
 
             new_row.append("<td>"+arguments[arg]+"</td>");
         }
-        console.log(new_row);
         return new_row;
 
     },
@@ -145,8 +174,38 @@ var myQuote = {
 
         $("#history tr:first").after(new_row);
 
-    }
+    },
 
+    profit_calcs: function() {
+
+    //Loop through each row on the history table
+
+        var total_profit = 0;
+
+        $('#history tr td:last-child').each(function() {
+
+            myQuote.symbol = $(this).parent().children()[0].innerHTML;
+            myQuote.number = $(this).parent().children()[2].innerHTML.replace("(","-").replace(")","");
+            myQuote.purchasePrice = $(this).parent().children()[3].innerHTML;
+
+            var current_price = myQuote.getCurrentPrice(myQuote.symbol);
+            var profit = myQuote.number * (current_price - myQuote.purchasePrice);
+            $(this).html(Math.round(profit*100)/100);
+
+            total_profit += profit;
+        });
+
+        total_profit = Math.round(total_profit*100)/100;
+
+        if(total_profit > 0){
+            $('#total_profit').html("<span class = 'gain'>TOTAL PROFIT: $"+total_profit+"</span>");
+        }
+        else {
+
+            $('#total_profit').html("<span class = 'loss'>TOTAL LOSS: $"+total_profit*(-1)+"</span>");
+        }
+
+    }
 };	//END: myQuote
 
 
@@ -156,8 +215,6 @@ function valueOrDefault(val, def) {
     return val == undefined ? def : val;
 }
 
-function spider(val, type) {
 
 
-    return val
-}
+

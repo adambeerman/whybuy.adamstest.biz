@@ -15,7 +15,20 @@ h1 a, h1 a:hover {
     text-decoration: none;
 }
 
-#stock_bucket {
+#stock_price {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#total_profit, #spider_profit {
+    text-align: center;
+}
+#total_profit .loss {
+    color:red;
+}
+
+#total_profit .gain {
+    color:darkgreen;
 }
 
 body {

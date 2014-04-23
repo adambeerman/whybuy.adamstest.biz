@@ -150,5 +150,16 @@ class users_controller extends base_controller {
 
     } # End of method settings
 
+    public function metrics() {
+
+        # Setup view
+        $this->template->content = View::instance('v_users_metrics');
+        $this->template->title = "Metrics";
+
+        # Render template
+        echo $this->template;
+
+    }
+
 	
 } # End of Class
