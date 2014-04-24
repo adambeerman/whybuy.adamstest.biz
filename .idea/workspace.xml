@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a249e1da-1712-44d3-a402-6da922c7dde3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/Metric.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_index.php" afterPath="$PROJECT_DIR$/controllers/c_index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_users.php" afterPath="$PROJECT_DIR$/controllers/c_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/stock2.css" afterPath="$PROJECT_DIR$/css/stock2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stockMetricHandler.js" afterPath="$PROJECT_DIR$/js/stockMetricHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stockQuoteHandler.js" afterPath="$PROJECT_DIR$/js/stockQuoteHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_index_index.php" afterPath="$PROJECT_DIR$/views/v_index_index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_users_metrics.php" afterPath="$PROJECT_DIR$/views/v_users_metrics.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="p4.adamstest.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -188,7 +181,7 @@
     <file path="/index.html" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398260071673" ignored="false" />
     <file path="/v_users_settings.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398266229844" ignored="false" />
     <file path="/stockQuoteHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398362354350" ignored="false" />
-    <file path="/v_users_metrics.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398366858012" ignored="false" />
+    <file path="/v_users_metrics.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398370969848" ignored="false" />
     <file path="/stockCalcHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398339481725" ignored="false" />
     <file path="/Metric.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398366802667" ignored="false" />
     <file path="/stockMetricHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398351847788" ignored="false" />
@@ -223,7 +216,7 @@
       <file leaf-file-name="c_users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/c_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="39" selection-start="5549" selection-end="5549" vertical-scroll-proportion="-2.98">
+            <state line="174" column="0" selection-start="5637" selection-end="5637" vertical-scroll-proportion="-4.18">
               <folding />
             </state>
           </provider>
@@ -249,19 +242,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="v_users_metrics.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="v_users_metrics.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/v_users_metrics.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="-7.5">
+            <state line="7" column="28" selection-start="216" selection-end="216" vertical-scroll-proportion="0.1764706">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Metric.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Metric.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/Metric.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.6944444">
+            <state line="41" column="0" selection-start="1134" selection-end="1134" vertical-scroll-proportion="-6.64557">
               <folding />
             </state>
           </provider>
@@ -334,9 +327,9 @@
         <option value="$PROJECT_DIR$/js/stockMetricHandler.js" />
         <option value="$PROJECT_DIR$/js/stockQuoteHandler.js" />
         <option value="$PROJECT_DIR$/css/stock2.css" />
+        <option value="$PROJECT_DIR$/libraries/Metric.php" />
         <option value="$PROJECT_DIR$/controllers/c_users.php" />
         <option value="$PROJECT_DIR$/views/v_users_metrics.php" />
-        <option value="$PROJECT_DIR$/libraries/Metric.php" />
       </list>
     </option>
   </component>
@@ -712,23 +705,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/v_users_metrics.php">
+    <entry file="file://$PROJECT_DIR$/libraries/Metric.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="-7.5">
+        <state line="41" column="0" selection-start="1134" selection-end="1134" vertical-scroll-proportion="-6.64557">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/c_users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="39" selection-start="5549" selection-end="5549" vertical-scroll-proportion="-2.98">
+        <state line="174" column="0" selection-start="5637" selection-end="5637" vertical-scroll-proportion="-4.18">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/Metric.php">
+    <entry file="file://$PROJECT_DIR$/views/v_users_metrics.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.6944444">
+        <state line="7" column="28" selection-start="216" selection-end="216" vertical-scroll-proportion="0.1764706">
           <folding />
         </state>
       </provider>

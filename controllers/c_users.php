@@ -169,9 +169,9 @@ class users_controller extends base_controller {
         $irrFinalCashFlow = DB::instance(DB_NAME)->select_row($sqlIRRValue);
 
         //Call the irr calculation
-        $irr = Metric::irr($irrCashFlows, $irrFinalCashFlow, 0.1);
+        //$irr = Metric::irr($irrCashFlows, $irrFinalCashFlow, 0.1);
 
-        DB::instance(DB_NAME)->update_row("users", Array("metric_irr" => $irr), "WHERE token = '".$this->user->token."'");
+        //DB::instance(DB_NAME)->update_row("users", Array("metric_irr" => $irr), "WHERE token = '".$this->user->token."'");
 
         $sql = "SELECT metric_profit, metric_irr
             FROM users
