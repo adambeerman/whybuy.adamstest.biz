@@ -65,7 +65,17 @@
         <!-- Build history if already exists -->
 
         <br />
-        <div id = "total_profit"></div>
+        <div id = "total_profit">
+            <?php if(isset($metrics)) {
+                if($metrics['metric_profit'] >= 0) {
+                    echo "<span class = 'gain'>TOTAL PROFIT : ".$metrics['metric_profit']."</span>";
+                }
+                else {
+                    echo "<span class = 'loss'>TOTAL LOSS : ".$metrics['metric_profit']*(-1)."</span>";
+                }
+            }
+            ?>
+        </div>
         <div id = "spider_profit"></div>
 
         <div id="history" data-role = "fieldcontain">

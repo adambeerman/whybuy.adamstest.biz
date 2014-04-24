@@ -80,12 +80,5 @@ class index_controller extends base_controller {
 
     } # end of method transact
 
-    public function profit_calc() {
 
-        $id = $this->user->user_id;
-
-
-
-    }
-	
 } # End of class

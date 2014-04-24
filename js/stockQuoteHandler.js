@@ -13,13 +13,14 @@ var myQuote = {
 
     init: function () {
 
-        myQuote.profit_calcs();
 
-        //Sumbit click handler:
+        myMetric.profit_calcs();
+
+        // Submit click handler:
         $("#stock_submit").click(function () {
 
+            // Find today's date
             var currentDate = new Date();
-
 
             //Get the ticker from the form:
             myQuote.symbol = $("#ticker").val().toUpperCase();
@@ -28,7 +29,7 @@ var myQuote = {
             myQuote.number = $('#number').val();
             myQuote.reason = $('#reason').val();
 
-            //Get the stock data from YQL via AJAX:
+            //Get the stock data from YQL via AJAX
             var $d = myQuote.getStockData();
 
             //After retrieving the JSON data, populate the table (nested AJAX call to populate database):
@@ -75,16 +76,13 @@ var myQuote = {
                     });
                 });
 
-
             // Update the profit calculations
-            myQuote.profit_calcs();
-
+            myMetric.profit_calcs();
 
             });
 
 
-        // Populate with current value when a user blurs from the stock selection input
-
+        // Populate with current value of stock when a user blurs from the stock selection input
         $('#ticker').blur(function () {
 
             // Gather the ticker value and convert to uppercase
@@ -94,13 +92,12 @@ var myQuote = {
             if(myQuote.symbol != ""){
 
                 // Gather the last stock price
-                var $d = myQuote.getCurrentPrice(myQuote.symbol);
-                $('#stock_price span').html(myQuote.symbol + " - last price: $"+$d);
-
+                $('#stock_price span').html(myQuote.symbol+" - price: $"+myQuote.getCurrentPrice(myQuote.symbol));
             }
              else {
+                // Keep the stock price field blank
                 if($('#ticker').val() == ""){
-                    $('#stock_price h4').html("");
+                    $('#stock_price span').html("");
                 }
             }
         });
@@ -108,7 +105,7 @@ var myQuote = {
 
     getCurrentPrice: function($symbol) {
 
-        //Build the URL to pass to YQL:
+        //Build the URL to pass to YQL, selecting LastTradePriceOnly
         var currentPrice = myQuote.yqlURL + "select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + $symbol + "%22)%0A%09%09&" + myQuote.dataFormat;
 
         $.ajax({
@@ -127,10 +124,9 @@ var myQuote = {
         return myQuote.price;
     },
 
-
     getStockData: function () {
 
-        //Build the URL to pass to YQL:
+        //Build the URL to pass to YQL. Gather all values:
         var realtimeQ = myQuote.yqlURL + "select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + myQuote.symbol + "%22)%0A%09%09&" + myQuote.dataFormat;
 
         //Using a jQuery Deferred object, get the json data:
@@ -153,7 +149,6 @@ var myQuote = {
         var new_row = $('<tr />');
         for(arg in arguments) {
 
-
             new_row.append("<td>"+arguments[arg]+"</td>");
         }
         return new_row;
@@ -166,36 +161,9 @@ var myQuote = {
 
     },
 
-    profit_calcs: function() {
 
-    //Loop through each row on the history table
 
-        var total_profit = 0;
 
-        $('#history tr td:last-child').each(function() {
-
-            myQuote.symbol = $(this).parent().children()[0].innerHTML;
-            myQuote.number = $(this).parent().children()[2].innerHTML.replace("(","-").replace(")","");
-            myQuote.purchasePrice = $(this).parent().children()[3].innerHTML;
-
-            var current_price = myQuote.getCurrentPrice(myQuote.symbol);
-            var profit = myQuote.number * (current_price - myQuote.purchasePrice);
-            $(this).html(Math.round(profit*100)/100);
-
-            total_profit += profit;
-        });
-
-        total_profit = Math.round(total_profit*100)/100;
-
-        if(total_profit >= 0){
-            $('#total_profit').html("<span class = 'gain'>TOTAL PROFIT: $"+total_profit+"</span>");
-        }
-        else {
-
-            $('#total_profit').html("<span class = 'loss'>TOTAL LOSS: $"+total_profit*(-1)+"</span>");
-        }
-
-    }
 };	//END: myQuote
 
 

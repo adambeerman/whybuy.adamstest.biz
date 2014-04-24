@@ -38,8 +38,8 @@
         <input type="password" value="" id="password" name="password" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c">
     </div>
 
-    <fieldset class="ui-grid-a">
-        <label for = "submit"></label>
+    <fieldset class="ui-grid-a right">
+        <label for = "submit"> </label>
         <div class="ui-block-a"><button data-theme="b" type="submit" class="ui-btn-hidden" aria-disabled="false">Login</button></div>
     </fieldset>
 

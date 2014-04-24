@@ -156,8 +156,26 @@ class users_controller extends base_controller {
         $this->template->content = View::instance('v_users_metrics');
         $this->template->title = "Metrics";
 
+        // Run the internal rate of return calculation
+
+        $sql = "SELECT metric_profit, metric_irr
+            FROM users
+            WHERE token = '".$this->user->token."';";
+
+        $metrics = DB::instance(DB_NAME)->select_row($sql);
+
+        $this->template->content->metrics = $metrics;
+
         # Render template
         echo $this->template;
+
+    }
+
+    public function update_metrics() {
+
+        DB::instance(DB_NAME)->update("users", $_POST, "WHERE token = '".$this->user->token."'");
+
+        echo $_POST['metric_profit'];
 
     }
 

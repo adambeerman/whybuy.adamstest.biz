@@ -19,6 +19,7 @@
     <script src="/js/jquery-2.0.2.js"></script>
     <script src="/js/jquery.mobile-1.4.2.js"></script>
     <script src="/js/stockQuoteHandler.js"></script>
+    <script src="/js/stockMetricHandler.js"></script>
 
     <script type="text/javascript">
         $(function() {
