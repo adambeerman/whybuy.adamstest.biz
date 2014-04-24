@@ -10,6 +10,7 @@ var myQuote = {
     purchasePrice: "",
     reason: "",
     stockStats: "",
+    valid: true,
 
     init: function () {
 
@@ -19,11 +20,18 @@ var myQuote = {
         // Submit click handler:
         $("#stock_submit").click(function () {
 
+            myQuote.symbol = $("#ticker").val().toUpperCase();
+
+            // Validate Symbol
+            myQuote.validateSymbol(myQuote.symbol);
+
+            console.log("valid = "+myQuote.valid);
+
+
             // Find today's date
             var currentDate = new Date();
 
-            //Get the ticker from the form:
-            myQuote.symbol = $("#ticker").val().toUpperCase();
+            // Store useful parameters
             myQuote.date = currentDate.getMonth()+1+"/"+currentDate.getDate();
             myQuote.type = $("input[name=transact]:checked").val();
             myQuote.number = $('#number').val();
@@ -89,17 +97,31 @@ var myQuote = {
             myQuote.symbol = $("#ticker").val().toUpperCase();
             $('#ticker').val(myQuote.symbol);
 
-            if(myQuote.symbol != ""){
+            if(myQuote.symbol != "") {
+                myQuote.validateSymbol(myQuote.symbol);
+            }
+
+            if(myQuote.symbol != "" && myQuote.valid){
 
                 // Gather the last stock price
+                myQuote.price = myQuote.getCurrentPrice(myQuote.symbol);
                 $('#stock_price span').html(myQuote.symbol+" - price: $"+myQuote.getCurrentPrice(myQuote.symbol));
+
             }
              else {
                 // Keep the stock price field blank
                 if($('#ticker').val() == ""){
                     $('#stock_price span').html("");
                 }
+                else {
+                    alert('invalid symbol');
+                    $('#ticker').val("");
+                }
             }
+        });
+
+        $('#refresh_profit').click(function() {
+           myMetric.profit_calcs();
         });
     },
 
@@ -108,6 +130,7 @@ var myQuote = {
         //Build the URL to pass to YQL, selecting LastTradePriceOnly
         var currentPrice = myQuote.yqlURL + "select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + $symbol + "%22)%0A%09%09&" + myQuote.dataFormat;
 
+        // Request stock price
         $.ajax({
             async: false,
             url: currentPrice,
@@ -116,6 +139,22 @@ var myQuote = {
         }).success(function(json, textStatus, jqXHR) {
 
                 myQuote.price = json.query.results.quote.LastTradePriceOnly;
+
+            }).error(function() {
+                alert('error');
+            });
+
+
+        // Update database with latest stock price
+
+        $.ajax({
+            async: false,
+            url: '/index/update_price/'+$symbol+'/',
+            data: {
+                price_latest: myQuote.price
+            },
+            type: 'post'
+        }).success(function(response) {
 
             }).error(function() {
                 alert('error');
@@ -161,9 +200,32 @@ var myQuote = {
 
     },
 
+    validateSymbol: function($symbol) {
 
+        // Validate by ensuring the last trade price has ana ctual value
 
+        //Build the URL to pass to YQL. Gather all values:
+        var testQuote = myQuote.yqlURL + "select%20LastTradePriceOnly%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + $symbol + "%22)%0A%09%09&" + myQuote.dataFormat;
 
+        //Using a jQuery Deferred object, get the json data:
+        var $defer = $.ajax({
+            async: false,
+            url: testQuote,
+            data: '{}',
+            dataType: 'json'
+        }).success(function (json, textStatus, jqXHR) {
+
+                if(json.query.results.quote.LastTradePriceOnly< 0.1) {
+                    myQuote.valid = false;
+                }
+                else {
+                    myQuote.valid = true;
+                }
+
+            }).error(function () {
+                alert('ERROR!');
+            });
+    }
 };	//END: myQuote
 
 

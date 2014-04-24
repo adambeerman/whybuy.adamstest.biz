@@ -36,7 +36,7 @@
 
 
             <div class = "center-buttons">
-                <fieldset data-role="controlgroup" data-type="horizontal" data-theme = "c">
+                <fieldset data-role="controlgroup" data-type="horizontal" data-mini = "true" data-theme = "c">
 
                     <input type="radio" name="transact" id="buy" value="buy" checked="checked" />
                     <label for="buy">Buy</label>
@@ -65,7 +65,10 @@
         <!-- Build history if already exists -->
 
         <br />
+
+
         <div id = "total_profit">
+
             <?php if(isset($metrics)) {
                 if($metrics['metric_profit'] >= 0) {
                     echo "<span class = 'gain'>TOTAL PROFIT : ".$metrics['metric_profit']."</span>";
@@ -76,6 +79,10 @@
             }
             ?>
         </div>
+
+        <a href="#" data-role="button" id="refresh_profit" data-icon="refresh" data-iconpos="notext">Refresh</a>
+
+
         <div id = "spider_profit"></div>
 
         <div id="history" data-role = "fieldcontain">

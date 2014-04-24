@@ -50,7 +50,6 @@ tr:last-of-type {
 tr:last-child {
     border-bottom: none;
 }
-
 td:last-child, th:last-child {
     border-right: none;
 }
@@ -59,3 +58,8 @@ td:last-child, th:last-child {
     margin: 0 auto;
     width: 200px;
 }
+
+#refresh_profit {
+    margin: 0 auto;
+}
+

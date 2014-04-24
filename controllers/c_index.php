@@ -57,9 +57,11 @@ class index_controller extends base_controller {
         switch($_POST['type']) {
             case "buy":
                 $_POST['type'] = 1;
+                $_POST['cash_flow'] = (-1)*$_POST['num_shares']*$_POST['price'];
                 break;
             case "sell":
                 $_POST['type'] = 2;
+                $_POST['cash_flow'] = $_POST['num_shares']*$_POST['price'];
                 break;
             default:
                 $_POST['type'] = 9;
@@ -79,6 +81,13 @@ class index_controller extends base_controller {
         echo $transact_id;
 
     } # end of method transact
+
+    function update_price($symbol = null) {
+
+        $whereCondition = "WHERE user_id = ".$this->user->user_id." AND symbol = '".$symbol."';";
+        DB::instance(DB_NAME)->update("transactions", $_POST, $whereCondition);
+
+    }
 
 
 } # End of class

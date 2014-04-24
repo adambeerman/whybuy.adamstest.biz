@@ -3,18 +3,14 @@ var myMetric = {
     profit: "",
     irr: "",
 
-
-    init: function() {
-
-    },
-
     profit_calcs: function() {
 
-        //Loop through each row on the history table
 
-        // Counter for total profit
+        // Counter for total value and total profit
+        var total_value = 0;
         var total_profit = 0;
 
+        // Loop through each row on the history table
         $('#history tr td:last-child').each(function() {
 
             myQuote.symbol = $(this).parent().children()[0].innerHTML;
@@ -25,16 +21,18 @@ var myMetric = {
             var profit = myQuote.number * (current_price - myQuote.purchasePrice);
             $(this).html(Math.round(profit*100)/100);
 
+            total_value += current_price * myQuote.number;
             total_profit += profit;
         });
 
+        // Round the value and profit figures
+        total_value = Math.round(total_value*100)/100;
         total_profit = Math.round(total_profit*100)/100;
 
-        // For now, conditionally update the database if profit != 0
+        // Conditionally update the database if profit != 0
         if(total_profit != 0) {
-            myMetric.update_user_metrics(total_profit);
+            myMetric.update_user_profit(total_value, total_profit);
         }
-
 
         // Display profit or loss, depending on sign of profit
         if(total_profit > 0){
@@ -47,19 +45,19 @@ var myMetric = {
 
     },
 
-    update_user_metrics: function($profit) {
+    update_user_profit: function($value, $profit) {
 
 
         $.ajax({
             async: false,
-            url: "/users/update_metrics",
+            url: "/users/update_profit",
             data: {
+                metric_value: $value,
                 metric_profit: $profit
             },
             type: 'post'
         }).success(function (response) {
 
-                console.log('database net profit: '+response);
             }).error(function () {
                 alert('ERROR here?!');
             });

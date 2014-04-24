@@ -156,7 +156,22 @@ class users_controller extends base_controller {
         $this->template->content = View::instance('v_users_metrics');
         $this->template->title = "Metrics";
 
-        // Run the internal rate of return calculation
+        //IRR CALCULATION
+        $sqlIRR = "SELECT created, cash_flow
+            FROM transactions
+            WHERE user_id = ".$this->user->user_id;
+
+        $irrCashFlows = DB::instance(DB_NAME)->select_rows($sqlIRR);
+
+        $sqlIRRValue = "SELECT metric_value
+            FROM users
+            WHERE user_id = ".$this->user->user_id;
+        $irrFinalCashFlow = DB::instance(DB_NAME)->select_row($sqlIRRValue);
+
+        //Call the irr calculation
+        $irr = Metric::irr($irrCashFlows, $irrFinalCashFlow, 0.1);
+
+        DB::instance(DB_NAME)->update_row("users", Array("metric_irr" => $irr), "WHERE token = '".$this->user->token."'");
 
         $sql = "SELECT metric_profit, metric_irr
             FROM users
@@ -171,11 +186,9 @@ class users_controller extends base_controller {
 
     }
 
-    public function update_metrics() {
+    public function update_profit() {
 
         DB::instance(DB_NAME)->update("users", $_POST, "WHERE token = '".$this->user->token."'");
-
-        echo $_POST['metric_profit'];
 
     }
 
