@@ -14,10 +14,16 @@ var myMetric = {
         $('#history tr td:last-child').each(function() {
 
             myQuote.symbol = $(this).parent().children()[0].innerHTML;
+
+            console.log(myQuote.symbol);
+
             myQuote.number = $(this).parent().children()[2].innerHTML.replace("(","-").replace(")","");
             myQuote.purchasePrice = $(this).parent().children()[3].innerHTML;
 
             var current_price = myQuote.getCurrentPrice(myQuote.symbol);
+
+            console.log(current_price);
+
             var profit = myQuote.number * (current_price - myQuote.purchasePrice);
 
             console.log("profit should be updating now: " + profit);
@@ -49,7 +55,6 @@ var myMetric = {
 
     update_user_profit: function($value, $profit) {
 
-
         $.ajax({
             async: false,
             url: "/users/update_profit",
@@ -59,7 +64,6 @@ var myMetric = {
             },
             type: 'post'
         }).success(function (response) {
-
             }).error(function () {
                 alert('ERROR here?!');
             });
