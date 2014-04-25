@@ -8,7 +8,7 @@
         <h3>$<?=round($metrics['invested']);?></h3>
 
         <h2>Return</h2>
-        <h3><?=round(100*$metrics['metric_profit']/$metrics['invested'])/100;?>%</h3>
+        <h3><?=round(1000*$metrics['metric_profit']/$metrics['invested'])/1000;?>%</h3>
 
     <?php endif; ?>
 </div>

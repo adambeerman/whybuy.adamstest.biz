@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a249e1da-1712-44d3-a402-6da922c7dde3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_users.php" afterPath="$PROJECT_DIR$/controllers/c_users.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_users_metrics.php" afterPath="$PROJECT_DIR$/views/v_users_metrics.php" />
     </list>
     <ignored path="p4.adamstest.biz.iws" />
@@ -243,7 +242,7 @@
       <file leaf-file-name="v_users_metrics.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/v_users_metrics.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="6" selection-start="371" selection-end="371" vertical-scroll-proportion="0.3277311">
+            <state line="10" column="77" selection-start="335" selection-end="335" vertical-scroll-proportion="0.25210086">
               <folding />
             </state>
           </provider>
@@ -719,7 +718,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/v_users_metrics.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="371" selection-end="371" vertical-scroll-proportion="0.3277311">
+        <state line="10" column="77" selection-start="335" selection-end="335" vertical-scroll-proportion="0.25210086">
           <folding />
         </state>
       </provider>
