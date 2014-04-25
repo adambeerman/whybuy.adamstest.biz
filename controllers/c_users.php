@@ -156,6 +156,10 @@ class users_controller extends base_controller {
         $this->template->content = View::instance('v_users_metrics');
         $this->template->title = "Metrics";
 
+        $client_files_head = Array(
+                "/js/accounting.js"
+            );
+
         //IRR CALCULATION
         $sqlIRR = "SELECT created, cash_flow
             FROM transactions
@@ -179,6 +183,13 @@ class users_controller extends base_controller {
 
         $metrics = DB::instance(DB_NAME)->select_row($sql);
 
+        $sqlInvested = "SELECT SUM(ABS(cash_flow)) AS invested
+            FROM transactions
+            WHERE user_id = ".$this->user->user_id.";";
+
+        $invested = DB::instance(DB_NAME)->select_row($sqlInvested);
+
+        $metrics['invested'] = $invested['invested'];
         $this->template->content->metrics = $metrics;
 
         # Render template
