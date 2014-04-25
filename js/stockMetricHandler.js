@@ -19,6 +19,8 @@ var myMetric = {
 
             myQuote.number = $(this).parent().children()[2].innerHTML.replace("(","-").replace(")","");
             myQuote.purchasePrice = $(this).parent().children()[3].innerHTML;
+            console.log('purchase price: ' + myQuote.purchasePrice);
+            console.log('number: ' + myQuote.number);
 
             var current_price = myQuote.getCurrentPrice(myQuote.symbol);
 
@@ -28,6 +30,7 @@ var myMetric = {
 
             console.log("profit should be updating now: " + profit);
             $(this).html(Math.round(profit*100)/100);
+            $(this).html("test");
 
             total_value += current_price * myQuote.number;
             total_profit += profit;

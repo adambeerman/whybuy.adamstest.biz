@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a249e1da-1712-44d3-a402-6da922c7dde3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stockMetricHandler.js" afterPath="$PROJECT_DIR$/js/stockMetricHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="p4.adamstest.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -184,7 +183,7 @@
     <file path="/v_users_metrics.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398370969848" ignored="false" />
     <file path="/stockCalcHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398339481725" ignored="false" />
     <file path="/Metric.php" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398366802667" ignored="false" />
-    <file path="/stockMetricHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398427076071" ignored="false" />
+    <file path="/stockMetricHandler.js" changelist="a249e1da-1712-44d3-a402-6da922c7dde3" time="1398427525895" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +278,7 @@
       <file leaf-file-name="stockMetricHandler.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/stockMetricHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="40" selection-start="2047" selection-end="2047" vertical-scroll-proportion="1.4924115">
+            <state line="22" column="32" selection-start="731" selection-end="731" vertical-scroll-proportion="0.40472177">
               <folding />
             </state>
           </provider>
@@ -710,7 +709,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/stockMetricHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="40" selection-start="2047" selection-end="2047" vertical-scroll-proportion="1.4924115">
+        <state line="22" column="32" selection-start="731" selection-end="731" vertical-scroll-proportion="0.40472177">
           <folding />
         </state>
       </provider>
