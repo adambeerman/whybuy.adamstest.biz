@@ -50,7 +50,7 @@
 
             <div data-role="fieldcontain" data-theme = "c">
                 <label for="number">Number of shares:</label>
-                <input type="range" name="number" id="number" value="50" min="0" max="100" />
+                <input type="range" name="number" id="number" value="50" min="0" max="10000" />
             </div>
 
 

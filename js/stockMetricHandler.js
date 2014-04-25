@@ -10,7 +10,7 @@ var myMetric = {
         var total_value = 0;
         var total_profit = 0;
 
-        // Loop through each row on the history table
+        // Loop through each row on the history table to update individual profits
         $('#history tr td:last-child').each(function() {
 
             myQuote.symbol = $(this).parent().children()[0].innerHTML;
@@ -19,6 +19,8 @@ var myMetric = {
 
             var current_price = myQuote.getCurrentPrice(myQuote.symbol);
             var profit = myQuote.number * (current_price - myQuote.purchasePrice);
+
+            console.log("profit should be updating now: " + profit);
             $(this).html(Math.round(profit*100)/100);
 
             total_value += current_price * myQuote.number;
