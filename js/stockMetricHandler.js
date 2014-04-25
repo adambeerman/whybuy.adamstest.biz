@@ -14,23 +14,13 @@ var myMetric = {
         $('#history tr td:last-child').each(function() {
 
             myQuote.symbol = $(this).parent().children()[0].innerHTML;
-
-            console.log(myQuote.symbol);
-
             myQuote.number = $(this).parent().children()[2].innerHTML.replace("(","-").replace(")","");
             myQuote.purchasePrice = $(this).parent().children()[3].innerHTML;
-            console.log('purchase price: ' + myQuote.purchasePrice);
-            console.log('number: ' + myQuote.number);
 
             var current_price = myQuote.getCurrentPrice(myQuote.symbol);
-
-            console.log(current_price);
-
             var profit = myQuote.number * (current_price - myQuote.purchasePrice);
 
-            console.log("profit should be updating now: " + profit);
             $(this).html(Math.round(profit*100)/100);
-            $(this).html("test");
 
             total_value += current_price * myQuote.number;
             total_profit += profit;
